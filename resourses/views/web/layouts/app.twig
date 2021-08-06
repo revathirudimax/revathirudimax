@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="author" content="Ajay Randhawa">
+
+    {% block meta %}
+    {% if (description) %}
+    <meta name="description" content="{{description }}">
+    {% endif %}
+    {% if (keywords) %}
+    <meta name="keywords" content="{{keywords}}">
+    {% endif %}
+    {% endblock %}
+
+    <!-- Loading StyleSheets -->
+
+     <!-- Favicon Icon -->
+		 <link rel="icon" type="image/png" href="images/fav.png" />
+		
+		 <!-- Stylesheets -->
+		 <link href="{{base_url()}}/../../../fonts.googleapis.com/css2_44112589.css" rel="stylesheet" />
+		 <link href='{{base_url()}}/vendor/unicons-2.0.1/css/unicons.css' rel='stylesheet' />
+		 <link href="{{base_url()}}/css/style.css" rel="stylesheet" />
+		 <link href="{{base_url()}}/css/responsive.css" rel="stylesheet" />
+     <link href="{{base_url()}}/css/night-mode.css" rel="stylesheet" />
+     <link href="{{base_url()}}/css/step-wizard.css" rel="stylesheet" />
+		
+		 <!-- Vendor Stylesheets -->
+		 <link href="{{base_url()}}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" />
+		 <link href="{{base_url()}}/vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet" />
+		 <link href="{{base_url()}}/vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet" />
+		 <link href="{{base_url()}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+		 <link rel="stylesheet" type="text/css" href="{{base_url()}}/vendor/semantic/semantic.min.css" />	
+
+    <script src="{{base_url()}}/js/jquery-3.3.1.min.js"></script>
+    <script src="{{base_url()}}/js/cart.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+
+  <body>
+    
+    {% include "web/layouts/inc/header.twig" %}
+
+      {% block content %} 
+      
+      {% endblock %}
+    
+    {% include "web/layouts/inc/footer.twig" %}
+
+     <!-- Javascripts -->
+
+	 <script src="{{base_url()}}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+   <script src="{{base_url()}}/vendor/OwlCarousel/owl.carousel.js"></script>
+   
+	 <script src="{{base_url()}}/vendor/semantic/semantic.min.js"></script>
+	 <script src="{{base_url()}}/js/jquery.countdown.min.js"></script>
+	 <script src="{{base_url()}}/js/custom.js"></script>
+	 <script src="{{base_url()}}/js/offset_overlay.js"></script>
+	 <script src="{{base_url()}}/js/night-mode.js"></script>
+   <script type="text/javascript">
+     $("#hidesuccess").animate({opacity: 1.0}, 5000).fadeOut("slow");
+   </script>
+   <script>
+    setTimeout(function() {
+        $("#hidesuccess").fadeOut(5000);
+      }, 5000);
+   </script>
+
+   <script>
+        $(document).ready(function() {
+           
+            $('.add-btn-wishlist').click(function(e) {
+                e.preventDefault();
+
+                $.ajaxSetup({
+                    headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                var itemid = $(this).closest('.product-item').find('.user_id').val();
+                        
+                $.ajax({
+                    type:'post',
+                    url:'{{base_url()}}/wishlist',
+                    data:{'itemid':itemid},
+                    success:function(response){
+                   
+                   alert('wishlist added successfully');
+                    }
+                });
+
+            });
+        });
+    </script>
+
+    
+    <script>
+        $(document).ready(function() {
+            // console.log("NNN");
+            
+            $('.remove-btn-favorite').click(function(e) {
+                e.preventDefault();
+             
+                $.ajaxSetup({
+                    headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+              
+                clickedThis = $(this);
+                
+                var notes_fav_id = $(this).closest('.product-item_remove').find('.user_id').val();
+               
+                $.ajax({
+                    type:'post',
+                     url:'{{base_url()}}/removewishlist',
+              
+                    data:{'notes_fav_id':notes_fav_id},
+                    success:function(response){
+                        $(clickedThis).closest('.product-item_remove').remove();
+                             alert('wishlist removed successfully');
+                        
+                    }
+                });
+
+            });
+        });
+    </script>
+
+  </body>
+</html>

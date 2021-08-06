@@ -1,0 +1,126 @@
+{% extends 'web/layouts/app.twig' %} 
+
+{% block title %}Grocery | {{company}} {% endblock %} 
+
+{% block content %}
+	 <!-- Body Start -->
+	 <div class="wrapper">
+		 <div class="gambo-Breadcrumb">
+			 <div class="container">
+				 <div class="row">
+					 <div class="col-md-12">
+						 <nav aria-label="breadcrumb">
+							 <ol class="breadcrumb">
+								 <li class="breadcrumb-item"><a href="{{base_url()}}/">Home </a></li>
+								 <li class="breadcrumb-item"><a href="{{base_url()}}/category/{{product.categry}}">{{product.categry}}</a></li>
+								 <li class="breadcrumb-item active" aria-current="page">{{product.name}}</li>
+							 </ol>
+						 </nav>
+					 </div>
+				 </div>
+			 </div>
+		 </div>
+		 <div class="all-product-grid">
+			 <div class="container">
+				 <div class="row">
+					 <div class="col-lg-12">
+						 <div class="product-dt-view">
+							 <div class="row">
+								 <div class="col-lg-4 col-md-4">
+									 <img class="pd-padding" src="{{base_url()}}/images/product/{{product.image}}" alt="" />
+								 </div>
+								 <div class="col-lg-8 col-md-8">
+									 <div class="product-dt-right">
+										 <h2>{{product.name}}</h2>
+										 <div class="no-stock">
+											 <p class="pd-no">Product No. <span> {{product.id}} </span></p>
+											 <p class="stock-qty">Available <span>(Instock) </span></p>
+										 </div>
+										 <div class="product-radio">
+											 <ul class="product-now">
+												 <li>
+													 <input type="radio" id="p1" name="product1" checked="checked"  />
+													 <label for="p1">{{product.quantity}}{{product.quantitytype}}</label>
+												 </li>
+											 </ul>
+										 </div>
+										 <p class="pp-descp">{{product.description}} </p>
+										 <div class="product-group-dt">
+											 <ul>
+												 <li><div class="main-price color-discount">Discount Price <span>{{currency}}{{product.price}}</span></div></li>
+												 <li><div class="main-price mrp-price">MRP Price <span>{{currency}}{{product.mrp}} </span></div></li>
+											 </ul>
+											 <ul class="ordr-crt-share">
+                                                <li>
+                                                    <div class="qty-product">
+                                                        <div class="quantity buttons_added UPDATE{{product.id}}">
+                                                            <input type="button" value="-" class="minus minus-btn" onclick="changeProductQty('{{product.id}}','-1')"/>
+                                                            <input type="number" step="1" name="quantity" value="1" class="input-text qty text" />
+                                                            <input type="button" value="+" class="plus plus-btn" onclick="changeProductQty('{{product.id}}','+1')"/>
+                                                        </div>
+                                                    </div>
+                                                </li>
+												 <li><button class="cart-btn ADD{{product.id}}" onclick="addToCart('{{product.id}}','{{product.name}}','{{product.price}}','{{product.mrp}}','{{product.quantity}}','{{product.quantitytype}}','{{base_url()}}/images/product/{{product.image}}')">Add To Cart <i class="uil uil-shopping-cart-alt"></i></button></li>
+												 <li><span class="like-icon save-icon" title="wishlist"></span></li>
+											 </ul>
+										 </div>
+									 </div>
+								 </div>
+							 </div>
+						 </div>
+					 </div>
+				 </div> 
+			 </div>
+		 </div>
+		 <!-- Featured Products Start -->
+		 <div class="section145">
+			 <div class="container">
+				 <div class="row">
+					 <div class="col-md-12">
+						 <div class="main-title-tt">
+							 <div class="main-title-left">
+								 <span>For You </span>
+								 <h2>Top Featured Products </h2>
+							 </div>
+							 <a href="#" class="see-more-btn">See All </a>
+						 </div>
+					 </div>
+					 <div class="col-md-12">
+						 <div class="owl-carousel featured-slider owl-theme">
+							 
+                             {% for item in items %}
+                                <div class="item">
+                                    <div class="product-item">
+                                        <a href="{{base_url()}}/pd/{{item.id}}/{{item.name | replace({" ":"-"}) }}" class="product-img">
+                                            <img src="{{base_url()}}/images/product/{{item.image}}" alt="{{item.name}}" title="{{item.name}}"/>
+                                            <div class="product-absolute-options">
+                                                <span class="offer-badge-1">{{(((item.mrp - item.price)/item.mrp)*100) | round }}% OFF</span>
+                                                <span class="like-icon" title="wishlist"></span>
+                                            </div>
+                                        </a>
+                                        <div class="product-text-dt">
+                                            <p>Available <span>(In Stock) </span></p>
+                                            <h4>{{item.name | length > 15 ? item.name |slice(0, 15) ~ '...' : item.name}}</h4>
+                                            <div class="product-qty">{{item.quantity}}{{item.quantitytype}}</div> <div class="product-price">{{currency}}{{item.price}}  <span> {{currency}}{{item.mrp }} </span></div>
+                                            <div class="qty-cart">
+                                                <div class="quantity buttons_added UPDATE{{item.id}}">
+                                                    <input type="button" value="-" class="minus minus-btn" onclick="changeProductQty('{{item.id}}','-1')"/>
+                                                    <input type="number" step="1" name="quantity" value="1" class="input-text qty text" />
+                                                    <input type="button" value="+" class="plus plus-btn" onclick="changeProductQty('{{item.id}}','+1')"/>
+                                                </div>
+                                                <button class="cart-btn ADD{{item.id}}" onclick="addToCart('{{item.id}}','{{item.name}}','{{item.price}}','{{item.mrp}}','{{item.quantity}}','{{item.quantitytype}}','{{base_url()}}/images/product/{{item.image}}')">Add To Cart <i class="uil uil-shopping-cart-alt"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+						 </div>
+					 </div>
+				 </div>
+			 </div>
+		 </div>
+		 <!-- Featured Products End -->
+	 </div>
+
+{% endblock %}

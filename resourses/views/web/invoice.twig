@@ -1,0 +1,132 @@
+<html>
+<head>
+	<link href="{{base_url()}}/css/style.css" rel="stylesheet" />
+	<link href="{{base_url()}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body>
+
+
+{% block content %}
+	 <!-- Header Start -->
+	 <header class="header clearfix">
+		 <div class="container">
+			 <div class="row">
+				 <div class="col-lg-12">
+					 <div class="top-header-group">
+						 <div class="top-header">
+							 <div class="main_logo ml-0" id="logo">
+								 <h3><b>{{company}}</b></h3>
+							 </div>
+							 <div class="header_right">
+								<p>Contact : {{phone}}</p>
+							 </div>
+						 </div>
+					 </div>
+				 </div>
+			 </div>
+		 </div>
+	 </header>
+	 <!-- Header End -->
+	 <!-- Body Start -->
+	 <div class="bill-dt-bg">
+		 <div class="container">
+			 <div class="row justify-content-center">
+				 <div class="col-lg-8">
+					 <div class="bill-detail">
+
+					 	<div class="bill-dt-step clearfix">
+						 	<div class="float-left">
+								<div class="bill-title">
+									<h4>DELIVERY DETAILS</h4>
+								</div>
+								<div class="bill-descp">
+									<div>Order ID :  {{order.orderid}}</div>
+									<div>{{order.fname}}</div>
+									<div>{{order.mobile}}</div>
+								</div>
+							 </div>
+							 <div class="float-right">
+								<img width="120px" src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl={{base_url()}}/u/invoice/{{order.orderid}}" />
+							 </div>
+						 </div>
+
+						 <div class="bill-dt-step">
+							 <div class="bill-title">
+								 <h4>DELIVERY ADDRESS </h4>
+							 </div>
+							 <div class="bill-descp">
+								 <p class="bill-address">{{order.address}} , {{order.city}}</p>
+							 </div>
+						 </div>
+
+						 <div class="bill-dt-step">
+							 <div class="bill-title">
+								 <h4>ITEMS</h4>
+							 </div>
+							 <div class="bill-descp">
+								 <table>
+
+								 	<tr>
+										<th><b>ITEM</b></th> <th><b>TYPE</b></th> <th><b>QTY</b></th> <th><b>TOTAL</b></th>
+									</tr>
+
+									{% for list in orderlist %}
+									<tr>
+										<td>{{list.itemname}}</td> <td>{{list.itemquantity}}{{list.itemquantitytype}}</td> <td>{{currency}}{{list.itemprice}} X {{list.Mquantity}}</td> <td> {{currency}}{{list.itemprice * list.Mquantity}}</td>
+									</tr>
+									{% endfor %}
+
+								 </table>
+							 </div>
+						 </div>
+						 
+						 <div class="bill-dt-step">
+							 <div class="bill-title">
+								 <h4>PAYMENT</h4>
+							 </div>
+							 <div class="bill-descp">
+								 <div class="total-checkout-group p-0 border-top-0">
+									 <div class="cart-total-dil">
+										 <h4>Coupon {{order.Coupon}} </h4>
+										 <span>-{{currency}}{{order.couponprice}}</span>
+									 </div>
+									 
+									 <div class="cart-total-dil pt-3">
+										 <h4>Delivery Charges </h4>
+										 <span>{{currency}}{{order.shipping}} </span>
+									 </div>
+								 </div>
+								 <div class="main-total-cart pl-0 pr-0 pb-0 border-bottom-0">
+									 <h2>TOTAL </h2>
+									 <span>{{currency}}{{order.total}}</span>
+								 </div>
+							 </div>
+						 </div>
+
+						 <div class="bill-dt-step">
+							 <div class="bill-title">
+								 <h4>PAYMENT OPTION </h4>
+							 </div>
+							 <div class="bill-descp">
+								 <p class="bill-dt-sl"><span class="dlr-ttl25 mr-1"><i class="uil uil-check-circle"></i></span>{{order.paymenttype}}</p>
+							 </div>
+						 </div>
+						 <div class="bill-dt-step">
+							 <div class="bill-bottom">
+								 <div class="thnk-ordr">Thanks for Ordering </div>
+								 <a class="print-btn hover-btn" href="javascript:window.print();">Print </a>
+							 </div>
+						 </div>
+					 </div>
+				 </div>
+			 </div>
+		 </div>
+	 </div>
+
+{% endblock %}
+
+
+</body>
+</html>
+

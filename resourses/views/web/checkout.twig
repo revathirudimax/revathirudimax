@@ -1,0 +1,367 @@
+{% extends 'web/layouts/app.twig' %} 
+
+{% block title %}Grocery | {{company}} {% endblock %} 
+
+{% block content %}
+	 <!-- Body Start -->
+<div class="wrapper">
+		 <div class="gambo-Breadcrumb">
+			 <div class="container">
+				 <div class="row">
+					 <div class="col-md-12">
+						 <nav aria-label="breadcrumb">
+							 <ol class="breadcrumb">
+								 <li class="breadcrumb-item"><a href="{{base_url()}}/">Home </a></li>
+								 <li class="breadcrumb-item active" aria-current="page">Checkout </li>
+							 </ol>
+						 </nav>
+					 </div>
+				 </div>
+			 </div>
+		 </div>
+		 <div class="all-product-grid">
+			 <div class="container">
+				 <div class="row">
+					 <div class="col-lg-8 col-md-7">
+						 <div id="checkout_wizard" class="checkout accordion left-chck145">
+							
+							 <div class="checkout-step">
+								 <div class="checkout-card" id="headingOne">
+									 <span class="checkout-step-number">1 </span>
+									 <h4 class="checkout-step-title">
+										 <button class="wizard-btn" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> Delivery Address </button>
+									 </h4>
+								 </div>
+								 <div id="collapseOne" class="collapse in show" aria-labelledby="headingOne" data-parent="#checkout_wizard">
+									 <div class="checkout-step-body">
+										 <div class="checout-address-step">
+											 <div class="row">
+												 <div class="col-lg-12">												
+													 <form class="delivery" onsubmit='return storeDeliveryData(this)'>
+														 <div class="address-fieldset">
+															 <div class="row">
+																 <div class="col-lg-6 col-md-12">
+																	 <div class="form-group">
+																		 <label class="control-label">Name* </label>
+																		 <input id="name" name="name" type="text" placeholder="Name" class="form-control input-md" required="" />
+																	 </div>
+																 </div>
+																 <div class="col-lg-6 col-md-12">
+																	 <div class="form-group">
+																		 <label class="control-label">Phone No* </label>
+																		 <input id="mobile" name="mobile" type="text" placeholder="Phone No." class="form-control input-md" required="" />
+																	 </div>
+																 </div>
+																 <div class="col-lg-12 col-md-12">
+																	 <div class="form-group">
+																		 <label class="control-label">City.* </label>
+																		 <input id="city" name="city" type="text" placeholder="City" class="form-control input-md" required="" />
+																	 </div>
+																 </div>
+																 <div class="col-lg-12 col-md-12">
+																	 <div class="form-group">
+																		 <label class="control-label">Area / Street / Society * </label>
+																		 <input id="street" name="street" type="text" placeholder="Street Address" class="form-control input-md" />
+																	 </div>
+																 </div>
+																 <div class="col-lg-12 col-md-12">
+																	 <div class="form-group">
+																		 <label class="control-label">Address* </label>
+																		 <input id="address" name="address" type="text" placeholder="Address" class="form-control input-md" required="" />
+																	 </div>
+																 </div>
+																 <div class="col-lg-12 col-md-12">
+																	 <div class="form-group">
+																		 <div class="address-btns">
+																			 <input id="cpl3" class="collapsed ml-auto next-btn16 hover-btn" role="button" data-toggle="collapse" data-parent="#checkout_wizard" href="" type="submit" value="Next">
+																		 </div>
+																	 </div>
+																 </div>
+															 </div>
+														 </div>
+													 </form>
+												 </div>
+											 </div>
+										 </div>
+									 </div>
+								 </div>
+							 </div>
+
+
+							 <div class="checkout-step">
+								 <div class="checkout-card" id="headingThree"> 
+									 <span class="checkout-step-number">2 </span>
+									 <h4 class="checkout-step-title">
+										 <button class="wizard-btn collapsed" type="button"  data-toggle="collapse"  aria-expanded="false" aria-controls="collapseThree"> Delivery Time </button>
+									 </h4>
+								 </div>
+								 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#checkout_wizard">
+									 <div class="checkout-step-body">
+										 <div class="row">
+											 <div class="col-md-12">
+												 <div class="form-group">
+													 <label class="control-label">Select Date and Time* </label>
+													 <div class="date-slider-group">
+														 <div class="owl-carousel date-slider owl-theme">
+															 <div class="item">
+																 <div class="date-now">
+																	 <input type="radio" id="dd1" name="date" checked="" value=""/>
+																	 <label for="dd1" id="ddl1">Today </label>
+																 </div>
+															 </div>
+															 <div class="item">
+																 <div class="date-now">
+																	 <input type="radio" id="dd2" name="date"  value=""/>
+																	 <label for="dd2" id="ddl2">Tomorrow </label>
+																 </div>
+															 </div>
+															 <div class="item">
+																 <div class="date-now">
+																	 <input type="radio" id="dd3" name="date"  value=""/>
+																	 <label for="dd3" id="ddl3"></label>
+																 </div>
+															 </div>
+															 <div class="item">
+																 <div class="date-now">
+																	 <input type="radio" id="dd4" name="date"  value=""/>
+																	 <label for="dd4" id="ddl4"></label>
+																 </div>
+															 </div>
+															 <div class="item">
+																 <div class="date-now">
+																	 <input type="radio" id="dd5" name="date"  value=""/>
+																	 <label for="dd5" id="ddl5"></label>
+																 </div>
+															 </div>
+															 <div class="item">
+																 <div class="date-now">
+																	 <input type="radio" id="dd6" name="date"  value=""/>
+																	 <label for="dd6" id="ddl6"></label>
+																 </div>
+															 </div>
+															 <div class="item">
+																 <div class="date-now">
+																	 <input type="radio" id="dd7" name="date"  value=""/>
+																	 <label for="dd7" id="ddl7"></label>
+																 </div>
+															 </div>
+															 <div class="item">
+																 <div class="date-now">
+																	 <input type="radio" id="dd8" name="date"  value=""/>
+																	 <label for="dd8" id="ddl8"></label>
+																 </div>
+															 </div>
+														 </div>
+													 </div>
+													 <div class="time-radio">
+														 <div class="ui form">
+															 <div class="grouped fields">
+																 <div class="field">
+																	 <div class="ui radio checkbox chck-rdio">
+																		 <input type="radio" name="time" checked="" tabindex="0" class="hidden" value="8.00AM - 10.00AM"/>
+																		 <label>8.00AM - 10.00AM </label>
+																	 </div>
+																 </div>
+																 <div class="field">
+																	 <div class="ui radio checkbox chck-rdio">
+																		 <input type="radio" name="time" tabindex="0" class="hidden" value="10.00AM - 12.00PM"/>
+																		 <label>10.00AM - 12.00PM </label>
+																	 </div>
+																 </div>
+																 <div class="field">
+																	 <div class="ui radio checkbox chck-rdio">
+																		 <input type="radio" name="time" tabindex="0" class="hidden" value="12.00PM - 2.00PM"/>
+																		 <label>12.00PM - 2.00PM </label>
+																	 </div>
+																 </div>
+																 <div class="field">
+																	 <div class="ui radio checkbox chck-rdio">
+																		 <input type="radio" name="time" tabindex="0" class="hidden" value="2.00PM - 4.00PM"/>
+																		 <label>2.00PM - 4.00PM </label>
+																	 </div>
+																 </div>
+																 <div class="field">
+																	 <div class="ui radio checkbox chck-rdio">
+																		 <input type="radio" name="time" tabindex="0" class="hidden" value="4.00PM - 6.00PM"/>
+																		 <label>4.00PM - 6.00PM </label>
+																	 </div>
+																 </div>
+															 </div>
+														 </div>
+													 </div>
+												 </div>
+											 </div>
+										 </div>
+										 <a class="collapsed next-btn16 hover-btn" role="button" data-toggle="collapse" href="#collapseFour" onclick="storeDatetime()">Proccess to payment</a>
+									 </div>
+								 </div>
+							 </div>
+
+
+							 <div class="checkout-step">
+								 <div class="checkout-card" id="headingFour">
+									 <span class="checkout-step-number">3 </span>
+									 <h4 class="checkout-step-title"> 
+										 <button class="wizard-btn collapsed" type="button" data-toggle="collapse"  aria-expanded="false" aria-controls="collapseFour">Payment </button>
+									 </h4>
+								 </div>
+								 <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#checkout_wizard">
+									 <div class="checkout-step-body">
+										 <div class="payment_method-checkout">	
+											 <div class="row">	
+												 <div class="col-md-12">
+													 <div class="rpt100">													
+														 <ul class="radio--group-inline-container_1">
+															 <li>
+																 <div class="radio-item_1">
+																	 <input id="cashondelivery1" value="cashondelivery" name="paymentmethod" type="radio" checked="checked"/>
+																	 <label for="cashondelivery1" class="radio-label_1">Cash on Delivery </label>
+																 </div>
+															 </li>
+					
+														 </ul>
+													 </div>
+													 <div class="form-group return-departure-dts" data-method="cashondelivery">															
+														 <div class="row">
+															 <div class="col-lg-12">
+																 <div class="pymnt_title">
+																	 <h4>Cash on Delivery </h4>
+																 </div>
+															 </div>														
+														 </div>
+													 </div>
+													 <div class="form-group return-departure-dts" data-method="card">															
+														 <div class="row">
+															 <div class="col-lg-12">
+																 <div class="pymnt_title mb-4">
+																	 <h4>Credit / Debit Card </h4>
+																 </div>
+															 </div>														
+															 <div class="col-lg-6">
+																 <div class="form-group mt-1">
+																	 <label class="control-label">Holder Name* </label>
+																	 <div class="ui search focus">
+																		 <div class="ui left icon input swdh11 swdh19">
+																			 <input class="prompt srch_explore" type="text" name="holdername" value="" id="holder[name]" required="" maxlength="64" placeholder="Holder Name" />															
+																		 </div>
+																	 </div>
+																 </div>
+															 </div>
+															 <div class="col-lg-6">
+																 <div class="form-group mt-1">
+																	 <label class="control-label">Card Number* </label>
+																	 <div class="ui search focus">
+																		 <div class="ui left icon input swdh11 swdh19">
+																			 <input class="prompt srch_explore" type="text" name="cardnumber" value="" id="card[number]" required="" maxlength="64" placeholder="Card Number" />															
+																		 </div>
+																	 </div>
+																 </div>
+															 </div>
+															 <div class="col-lg-4">
+																 <div class="form-group mt-1">																	
+																	 <label class="control-label">Expiration Month* </label>
+																	 <select class="ui fluid search dropdown form-dropdown" name="card[expire-month]">
+																		 <option value="" />Month 
+																		 <option value="1" />January 
+																		 <option value="2" />February 
+																		 <option value="3" />March 
+																		 <option value="4" />April 
+																		 <option value="5" />May 
+																		 <option value="6" />June 
+																		 <option value="7" />July 
+																		 <option value="8" />August 
+																		 <option value="9" />September 
+																		 <option value="10" />October 
+																		 <option value="11" />November 
+																		 <option value="12" />December 
+																	   </select>	
+																 </div>
+															 </div>
+															 <div class="col-lg-4">
+																 <div class="form-group mt-1">
+																	 <label class="control-label">Expiration Year* </label>
+																	 <div class="ui search focus">
+																		 <div class="ui left icon input swdh11 swdh19">
+																			 <input class="prompt srch_explore" type="text" name="card[expire-year]" maxlength="4" placeholder="Year" />															
+																		 </div>
+																	 </div>
+																 </div>
+															 </div>
+															 <div class="col-lg-4">
+																 <div class="form-group mt-1">
+																	 <label class="control-label">CVV* </label>
+																	 <div class="ui search focus">
+																		 <div class="ui left icon input swdh11 swdh19">
+																			 <input class="prompt srch_explore" name="card[cvc]" maxlength="3" placeholder="CVV" />															
+																		 </div>
+																	 </div>
+																 </div>
+															 </div>
+														 </div>
+													 </div>	
+
+													<a href="#" onclick="placeorder()" id="ordbtn" class="next-btn16 hover-btn"/>Place Order</a>
+												 </div>
+											 </div>
+										 </div>
+									 </div>
+								 </div>
+							 </div>
+						 </div>
+					 </div>
+					 <div class="col-lg-4 col-md-5">
+						 <div class="pdpt-bg mt-0">
+							 <div class="pdpt-title">
+								 <h4>Order Summary </h4>
+							 </div>
+							 <div class="right-cart-dt-body">
+
+								{% for item in items %}
+									<div class="cart-item border_radius">
+										<div class="cart-product-img">
+											<img src="{{base_url()}}/images/product/{{item.image}}" />
+										</div>
+										<div class="cart-text">
+											<h4>{{item.name}}</h4>
+											<div class="cart-item-price mycart">{{currency}}{{item.price}} / {{item.quantity}}{{item.quantitytype}}  <span> X {{item.qty}} </span> </div>
+										</div>		
+									</div>
+								{% endfor %}
+
+							 </div>
+							 <div class="total-checkout-group">
+								 <div class="cart-total-dil">
+									 <h4>Subtotal </h4>
+									 <span>{{currency}}{{subtotal}}</span>
+								 </div>
+								 <div class="cart-total-dil pt-3">
+									 <h4>Delivery Charges </h4>
+									 <span>{{currency}}{{shipping}}</span>
+								 </div>
+							 </div>
+							 <div class="cart-total-dil saving-total ">
+								 <h4>Total Saving </h4>
+								 <span>{{currency}}{{saving}}</span>
+							 </div>
+							 <div class="main-total-cart">
+								 <h2>Total </h2>
+								 <span>{{currency}}{{total}}</span>
+							 </div>
+							 <div class="payment-secure">
+								 <i class="uil uil-padlock"></i>Secure checkout
+							 </div>
+						 </div>
+						 <a href="#" class="promo-link45">Have a promocode? </a>
+						 <div class="checkout-safety-alerts">
+							 <p><i class="uil uil-sync"></i>100% Replacement Guarantee </p>
+							 <p><i class="uil uil-check-square"></i>100% Genuine Products </p>
+							 <p><i class="uil uil-shield-check"></i>Secure Payments </p>
+						 </div>
+					 </div>
+				 </div>
+			 </div>
+		 </div>	
+	 </div>
+	 <!-- Body End -->
+
+{% endblock %}

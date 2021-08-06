@@ -1,0 +1,250 @@
+{% extends 'web/layouts/app.twig' %} 
+{% block title %} {{company}} | Online Grocery Store : Buy Online Grocery from SA{% endblock %} 
+{% block content %}
+	 <!-- Body Start -->
+	 <div class="wrapper">
+		 <!-- Offers Start -->
+		 <div class="main-banner-slider">
+			 <div class="container">
+				 <div class="row">
+					 <div class="col-md-12">
+						 <div class="owl-carousel offers-banner owl-theme">
+                     {% for banner in banners %}
+							 <div class="item">
+								 <div class="offer-item">								
+									 <div class="offer-item-img">
+										 <div class="gambo-overlay"></div>
+										 <img src="https://gobasket.co.za/c/admin/banner/{{banner.bnimg}}" alt="" />
+									 </div>
+									 <div class="offer-text-dt">
+										 <div class="offer-top-text-banner">
+											 <p>6% Off </p>
+											 <div class="top-text-1">Buy More & Save More </div>
+											 <span>Fresh Vegetables </span>
+										 </div>
+										 <a href="{{base_url()}}/offers" class="Offer-shop-btn hover-btn">Shop Now </a>
+									 </div>
+								 </div>
+							 </div>
+                     {% endfor %}
+						 </div>
+					 </div>
+				 </div>
+			 </div>
+		 </div>
+		 <!-- Offers End -->
+		 <!-- Categories Start -->
+		 <div class="section145">
+			 <div class="container">
+				 <div class="row">
+					 <div class="col-md-12">
+						 <div class="main-title-tt">
+							 <div class="main-title-left">
+								 <span>Shop By </span>
+								 <h2>Categories </h2>
+							 </div>
+						 </div>
+					 </div>
+					 <div class="col-md-12">
+						 <div class="owl-carousel cate-slider owl-theme">
+
+                   {% for cat in category %}
+							 <div class="item">
+								 <a href="{{base_url()}}/category/{{cat.categry | replace({" ":"-"}) }}" class="category-item">
+									 <div class="cate-img">
+										 <img src="https://gobasket.co.za/c/admin/itemimg/{{cat.cateimg}}" alt="{{cat.categry}}" />
+									 </div>
+									 <h4>{{cat.categry}}</h4>
+								 </a>
+							 </div>
+                  {% endfor %}
+							 
+						 </div>
+					 </div>
+				 </div>
+			 </div>
+		 </div>
+		 <!-- Categories End -->
+		 <!-- Featured Products Start -->
+		 <div class="section145">
+			 <div class="container">
+				 <div class="row">
+					 <div class="col-md-12">
+						 <div class="main-title-tt">
+							 <div class="main-title-left">
+								 <span>For You </span>
+								 <h2>Top Featured Products </h2>
+							 </div>
+							 <a href="#" class="see-more-btn">See All </a>
+						 </div>
+					 </div>
+					 <div class="col-md-12">
+						 <div class="owl-carousel featured-slider owl-theme">
+
+                   {% for item in items | slice(0,12) %}
+							 <div class="item">
+								 <div class="product-item">
+									 <a href="{{base_url()}}/pd/{{item.id}}/{{item.name | replace({" ":"-"}) }}" class="product-img">
+										 <img src="https://gobasket.co.za/c/admin/itemimg/{{item.image}}" alt="{{item.name}}" title="{{item.name}}"/>
+										 <div class="product-absolute-options">
+											 <span class="offer-badge-1">{{(((item.mrp - item.price)/item.mrp)*100) | round }}% OFF</span>
+											 <span class="like-icon" title="wishlist"></span>
+										 </div>
+									 </a>
+									 <div class="product-text-dt">
+										 <p>Available <span>(In Stock) </span></p>
+										 <h4>{{item.name | length > 15 ? item.name |slice(0, 15) ~ '...' : item.name}}</h4>
+										 <div class="product-qty">{{item.quantity}}{{item.quantitytype}}</div> <div class="product-price">{{currency}}{{item.price}}  <span> {{currency}}{{item.mrp }} </span></div>
+										 <div class="qty-cart">
+                                 			<div class="quantity buttons_added UPDATE{{item.id}}">
+												 <input type="button" value="-" class="minus minus-btn" onclick="changeProductQty('{{item.id}}','-1')"/>
+												 <input type="number" step="1" name="quantity" value="1" class="input-text qty text" />
+												 <input type="button" value="+" class="plus plus-btn" onclick="changeProductQty('{{item.id}}','+1')"/>
+											 </div>
+                                 			<button class="cart-btn ADD{{item.id}}" onclick="addToCart('{{item.id}}','{{item.name}}','{{item.price}}','{{item.mrp}}','{{item.quantity}}','{{item.quantitytype}}','{{item.image}}')">Add To Cart <i class="uil uil-shopping-cart-alt"></i></button>
+										 </div>
+									 </div>
+								 </div>
+							 </div>
+                     {% endfor %}
+						 </div>
+					 </div>
+				 </div>
+			 </div>
+		 </div>
+		 <!-- Featured Products End -->
+		 <!-- Best Values Offers Start -->
+		 <div class="section145">
+			 <div class="container">
+				 <div class="row">
+					 <div class="col-md-12">
+						 <div class="main-title-tt">
+							 <div class="main-title-left">
+								 <span>Offers </span>
+								 <h2>Best Values </h2>
+							 </div>
+						 </div>
+					 </div>
+					 <div class="col-lg-4 col-md-6">
+						 <a href="{{base_url()}}/offers" class="best-offer-item">
+							 <img src="images/best-offers/offer-1.jpg" alt="" />
+						 </a>
+					 </div>
+					 <div class="col-lg-4 col-md-6">
+						 <a href="{{base_url()}}/offers" class="best-offer-item">
+							 <img src="images/best-offers/offer-2.jpg" alt="" />
+						 </a>
+					 </div>
+					 <div class="col-lg-4 col-md-6">
+						 <a href="{{base_url()}}/offers" class="best-offer-item">
+							 <img src="images/best-offers/offer-3.jpg" alt="" />
+						 </a>
+					 </div>
+				 </div>
+			 </div>
+		 </div>
+		 <!-- Best Values Offers End -->
+		 <!-- Vegetables and Fruits Start -->
+		 <div class="section145">
+			 <div class="container">
+				 <div class="row">
+					 <div class="col-md-12">
+						 <div class="main-title-tt">
+							 <div class="main-title-left">
+								 <span>For You </span>
+								 <h2>Fresh Vegetables & Fruits </h2>
+							 </div>
+							 <a href="#" class="see-more-btn">See All </a>
+						 </div>
+					 </div>
+					 <div class="col-md-12">
+						 <div class="owl-carousel featured-slider owl-theme">
+							 
+						{% for item in items | slice(0,12) %}
+							 <div class="item">
+								 <div class="product-item">
+									 <a href="{{base_url()}}/pd/{{item.id}}/{{item.name | replace({" ":"-"}) }}" class="product-img">
+										 <img src="https://gobasket.co.za/c/admin/itemimg/{{item.image}}" alt="{{item.name}}" title="{{item.name}}"/>
+										 <div class="product-absolute-options">
+											 <span class="offer-badge-1">{{(((item.mrp - item.price)/item.mrp)*100) | round }}% OFF</span>
+											 <span class="like-icon" title="wishlist"></span>
+										 </div>
+									 </a>
+									 <div class="product-text-dt">
+										 <p>Available <span>(In Stock) </span></p>
+										 <h4>{{item.name | length > 15 ? item.name |slice(0, 15) ~ '...' : item.name}}</h4>
+										 <div class="product-qty">{{item.quantity}}{{item.quantitytype}}</div> <div class="product-price">{{currency}}{{item.price}}  <span> {{currency}}{{item.mrp }} </span></div>
+										 <div class="qty-cart">
+                                 			<div class="quantity buttons_added UPDATE{{item.id}}">
+												 <input type="button" value="-" class="minus minus-btn" onclick="changeProductQty('{{item.id}}','-1')"/>
+												 <input type="number" step="1" name="quantity" value="1" class="input-text qty text" />
+												 <input type="button" value="+" class="plus plus-btn" onclick="changeProductQty('{{item.id}}','+1')"/>
+											 </div>
+                                 			<button class="cart-btn ADD{{item.id}}" onclick="addToCart('{{item.id}}','{{item.name}}','{{item.price}}','{{item.mrp}}','{{item.quantity}}','{{item.quantitytype}}','{{item.image}}')">Add To Cart <i class="uil uil-shopping-cart-alt"></i></button>
+										 </div>
+									 </div>
+								 </div>
+							 </div>
+                     {% endfor %}
+
+
+						 </div>
+					 </div>
+				 </div>
+			 </div>
+		 </div>
+		 <!-- Vegetables and Fruits Products End -->
+		 <!-- New Products Start -->
+		 <div class="section145">
+			 <div class="container">
+				 <div class="row">
+					 <div class="col-md-12">
+						 <div class="main-title-tt">
+							 <div class="main-title-left">
+								 <span>For You </span>
+								 <h2>Added New Products </h2>
+							 </div>
+							 <a href="#" class="see-more-btn">See All </a>
+						 </div>
+					 </div>
+					 <div class="col-md-12">
+						 <div class="owl-carousel featured-slider owl-theme">
+						
+						{% for item in items | slice(0,12) %}
+							 <div class="item">
+								 <div class="product-item">
+									 <a href="{{base_url()}}/pd/{{item.id}}/{{item.name | replace({" ":"-"}) }}" class="product-img">
+										 <img src="https://gobasket.co.za/c/admin/itemimg/{{item.image}}" alt="{{item.name}}" title="{{item.name}}"/>
+										 <div class="product-absolute-options">
+											 <span class="offer-badge-1">{{(((item.mrp - item.price)/item.mrp)*100) | round }}% OFF</span>
+											 <span class="like-icon" title="wishlist"></span>
+										 </div>
+									 </a>
+									 <div class="product-text-dt">
+										 <p>Available <span>(In Stock) </span></p>
+										 <h4>{{item.name | length > 15 ? item.name |slice(0, 15) ~ '...' : item.name}}</h4>
+										 <div class="product-qty">{{item.quantity}}{{item.quantitytype}}</div> <div class="product-price">{{currency}}{{item.price}}  <span> {{currency}}{{item.mrp }} </span></div>
+										 <div class="qty-cart">
+                                 			<div class="quantity buttons_added UPDATE{{item.id}}">
+												 <input type="button" value="-" class="minus minus-btn" onclick="changeProductQty('{{item.id}}','-1')"/>
+												 <input type="number" step="1" name="quantity" value="1" class="input-text qty text" />
+												 <input type="button" value="+" class="plus plus-btn" onclick="changeProductQty('{{item.id}}','+1')"/>
+											 </div>
+                                 			<button class="cart-btn ADD{{item.id}}" onclick="addToCart('{{item.id}}','{{item.name}}','{{item.price}}','{{item.mrp}}','{{item.quantity}}','{{item.quantitytype}}','{{item.image}}')">Add To Cart <i class="uil uil-shopping-cart-alt"></i></button>
+										 </div>
+									 </div>
+								 </div>
+							 </div>
+                     {% endfor %}
+			
+						 </div>
+					 </div>
+				 </div>
+			 </div>
+		 </div>
+		 <!-- New Products End -->
+	 </div>
+	 <!-- Body End -->
+
+
+{% endblock %}

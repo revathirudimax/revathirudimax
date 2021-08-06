@@ -1,0 +1,102 @@
+
+<html lang="en">
+
+<head>
+
+	<title> Login | {{company}}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, shrink-to-fit=9" />
+	<meta name="description" content="Scurite" />
+	<meta name="author" content="Scurite" />		
+
+	<!-- Favicon Icon -->
+	<link rel="icon" type="image/png" href="{{base_url()}}/images/fav.png" />
+
+	<!-- Stylesheets -->
+	<link href='{{base_url()}}/vendor/unicons-2.0.1/css/unicons.css' rel='stylesheet' />
+	<link href="{{base_url()}}/css/style.css" rel="stylesheet" />
+	<link href="{{base_url()}}/css/responsive.css" rel="stylesheet" />
+	<link href="{{base_url()}}/css/night-mode.css" rel="stylesheet" />
+	<link href="{{base_url()}}/css/step-wizard.css" rel="stylesheet" />
+
+	<!-- Vendor Stylesheets -->
+	<link href="{{base_url()}}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" />
+	<link href="{{base_url()}}/vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet" />
+	<link href="{{base_url()}}/vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet" />
+	<link href="{{base_url()}}/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="{{base_url()}}/vendor/semantic/semantic.min.css" />	
+
+</head>
+
+<body>
+
+	<div class="sign-inup">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-5">
+					<div class="sign-form">
+						<div class="sign-inner">
+							<div class="sign-logo vj-sunny" id="logo">
+								<a href="index.html"><img src="{{base_url()}}/images/logo.png" alt="" /></a>
+								<a href="index.html"><img class="logo-inverse" src="{{base_url()}}images/logo.png" alt="" /></a>
+							</div>
+
+							<div class="ui container flash ">
+								{% for name, messages in flash.getMessages() %}
+								<div class="ui {{ name }} message">
+									<div class="vj-header">
+										{% for message in messages %}
+										{{ message }}
+										{% endfor %}
+									</div>
+								</div>
+								{% endfor %}
+							</div>
+							<div class="form-dt">
+
+
+								<div class="form-inpts checout-address-step">
+
+									<form method="post">
+										<div class="form-title"><h6>Sign In </h6></div>
+										<div class="form-group pos_rel">
+											<input name="email" type="email" placeholder="Enter Email" class="form-control lgn_input" required="" />
+											<i class="uil uil-envelope lgn_icon"></i>
+										</div>
+										<div class="form-group pos_rel">
+											<input name="password" type="password" placeholder="Enter Password" class="form-control lgn_input" required="" />
+											<i class="uil uil-padlock lgn_icon"></i>
+										</div>
+										<button class="login-btn hover-btn" type="submit">Sign In Now </button>
+									</form>
+								</div>
+								<div class="signup-link">
+									<p>Don't have an account? - <a href="{{base_url()}}/signup">Sign Up Now </a></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="copyright-text text-center mt-3">
+						<i class="uil uil-copyright"></i>Copyright 2020  <b>{{company}}</b>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Javascripts -->
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="vendor/OwlCarousel/owl.carousel.js"></script>
+	<script src="vendor/semantic/semantic.min.js"></script>
+	<script src="js/jquery.countdown.min.js"></script>
+	<script src="js/custom.js"></script>
+	<script src="js/product.thumbnail.slider.js"></script>
+	<script src="js/offset_overlay.js"></script>
+	<script src="js/night-mode.js"></script>
+
+
+</body>
+</html>

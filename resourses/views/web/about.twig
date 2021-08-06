@@ -1,0 +1,50 @@
+{% extends 'web/layouts/app.twig' %} 
+
+
+{% block title %} About | {{company}} {% endblock %} 
+
+{% block content %}
+<!-- Body Start -->
+	 <div class="wrapper">
+		 <div class="gambo-Breadcrumb">
+			 <div class="container">
+				 <div class="row">
+					 <div class="col-md-12">
+						 <nav aria-label="breadcrumb">
+							 <ol class="breadcrumb">
+								 <li class="breadcrumb-item"><a href="{{base_url()}}/">Home </a></li>
+								 <li class="breadcrumb-item active" aria-current="page">About</li>
+							 </ol>
+						 </nav>
+					 </div>
+				 </div>
+			 </div>
+		 </div>
+		
+		<div class="life-gambo">
+			 <div class="container">
+				 <div class="row">
+					 <div class="col-lg-6">
+						 <div class="default-title left-text">
+							 <h2>About {{company}} </h2>
+							 <p>Customers Deserve Better </p>
+							 <img src="images/line.svg" alt="" />
+						 </div>
+						 <div class="about-content">
+							 <p>Lorem ipsum dolor sit ____, consectetur adipiscing elit. Vestibulum __ sodales sapien. Sed pellentesque, ____ in ornare tincidunt, magna _____ placerat nunc, ut facilisis ____ ipsum non ipsum. Cras __ eros non neque viverra _________ sed at est. Fusce _________, lacus nec dignissim tincidunt, ____ sapien rhoncus neque, at _________ sapien nibh sed neque. _____ in neque in purus ______ facilisis. Donec viverra ligula ____ lorem viverra consequat. Aliquam ___________ id enim volutpat rutrum. _____ semper iaculis convallis. Praesent ____ elit eget ligula facilisis ______. Praesent sed euismod dui. ___________ imperdiet vel quam nec _________. Suspendisse dictum blandit quam, _____ auctor enim gravida et. ___ id dictum nibh. Proin _______ massa sit amet tincidunt _______. </p>
+						 </div>
+					 </div>
+					 <div class="col-lg-6">
+						 <div class="about-img">
+							 <img src="images/about.svg" alt="" />
+						 </div>
+					 </div>
+				 </div>
+			 </div>
+		 </div>
+
+
+	 </div>
+	 <!-- Body End -->
+
+{% endblock %}
